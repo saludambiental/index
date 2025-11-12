@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa Coloquio 28 Noviembre 2025</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Librerías para generar PDF -->
+    <!-- 1. html2canvas: Para "tomar foto" de la web -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- 2. jsPDF: Para crear el archivo PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <style>
+        /* Fuente Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Oculta el scrollbar en el HTML */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Estilos para el botón cuando está cargando */
+        .btn-loading {
+            background-color: #9ca3af; /* gray-400 */
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4 md:p-8">
+
+    <!-- Botón de descarga -->
+    <div class="max-w-7xl mx-auto mb-4 text-right">
+        <button id="download-pdf" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300">
+            Descargar PDF (Una Sola Página)
+        </button>
+    </div>
+
+    <!-- Contenedor principal que simula una hoja -->
+    <!-- Añadimos un ID "programa-container" para que el script sepa qué "fotografiar" -->
+    <div id="programa-container" class="max-w-7xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        
+        <!-- Encabezado -->
+        <header class="p-6 md:p-10 bg-white border-b border-gray-200">
+            <div class="flex flex-col items-center space-y-6">
+                <!-- Logos con alturas ajustadas para mejor balance visual -->
+                <div class="flex flex-wrap justify-center items-center gap-6">
+                    <!-- Logo CUCBA (más ancho) con altura reducida -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Logo_CUCBA.png" alt="Logo CUCBA" class="h-16 w-auto rounded-md">
+                    <!-- Logos UdG y Maestría -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Logotipo_Universidad-de-Guadalajara.png" alt="Logo Universidad de Guadalajara" class="h-20 w-auto rounded-md">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Maestr%C3%ADa_en_Ciencias_de_la_Salud_Ambiental.png" alt="Logo Maestría" class="h-20 w-auto rounded-md">
+                </div>
+                
+                <div class="text-center">
+                    <h1 class="text-2xl md:text-3xl font-bold text-blue-900">Universidad de Guadalajara</h1>
+                    <h2 class="text-xl md:text-2xl font-semibold text-teal-700">Maestría en Ciencias de la Salud Ambiental</h2>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900">PROGRAMA COLOQUIO 28 NOVIEMBRE 2025</h3>
+                <p class="text-lg md:text-xl font-medium text-gray-600 mt-2">AVANCES DE INVESTIGACIÓN DE TESIS MAESTRÍA EN CIENCIAS DE LA SALUD AMBIENTAL</p>
+                
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-8 mt-4 text-base md:text-lg">
+                    <p class="font-semibold"><span class="text-gray-500">LUGAR:</span> AULAS DE POSGRADO</p>
+                    <p class="font-semibold"><span class="text-gray-500">HORARIO:</span> 10:00 a 13:00 horas</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal - Mesas -->
+        <main class="p-6 md:p-10">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">MESAS DE TRABAJO</h2>
+            
+            <!-- Grid de 3 Columnas -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+                
+                <!-- MESA 1: DETERMINANTES SOCIALES DE LA SALUD -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-4 pb-2 border-b border-blue-300">DETERMINANTES SOCIALES DE LA SALUD</h3>
+                    <div class="text-sm mb-4 p-3 bg-white rounded-md shadow-sm">
+                        <p><strong>Presidente:</strong> Dr. René Cristóbal Crocker Sagastume</p>
+                        <p><strong>Secretario:</strong> Dr. Arturo Curiel Ballesteros</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <!-- Presentación 1.1 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-blue-700">10:00 – 10:15</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Yadira Delgado Orozco.</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Percepción social del riesgo por inundación de la población de Tuxpan, Nayarit y sus estrategias de afrontamiento-2025."</p>
+                            <div class="text-xs mt-2 text-gray-600">
+                                <p><strong>Director:</strong> Dr. Arturo Curiel Ballesteros</p>
+                                <p><strong>Codirectora:</strong> Dra. Cecilia Soraya Shibya Soto</p>
+                            </div>
+                            <p class="text-sm font-medium text-blue-600 mt-2">Comentarios y Evaluación: 10:15 – 10:25</p>
+                        </div>
+                        
+                        <!-- Presentación 1.2 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-blue-700">10:25 – 10:40</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Samantha Gheraldi Cárdenas Becerra.</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Relación entre desigualdad socioespacial y secuelas post-COVID en adultos de la colonia San Andrés, Guadalajara, Jalisco 2020-2025."</p>
+                            <div class="text-xs mt-2 text-gray-600">
+                                <p><strong>Director:</strong> Dr. Arturo Figueroa Montaño</p>
+                                <p><strong>Codirector:</strong> Dr. Salvador Sevilla Villalobos</p>
+                            </div>
+                            <p class="text-sm font-medium text-blue-600 mt-2">Comentarios y Evaluación: 10:40 – 10:50</p>
+                        </div>
+
+                        <!-- Presentación 1.3 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-blue-700">10:50 – 11:05</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Ilse Denisse Sánchez Jiménez</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Calidad ambiental en un parque urbano en Guadalajara Jalisco y molestias percibidas en los deportistas y trabajadores 2024-2025."</p>
+                            <div class="text-xs mt-2 text-gray-600">
+                                <p><strong>Directora:</strong> Dra. Martha Georgina Orozco Medina</p>
+                                <p><strong>Codirectora:</strong> Dra. María Azucena Arellano Avelar</p>
+                            </div>
+                            <p class="text-sm font-medium text-blue-600 mt-2">Comentarios y Evaluación: 11:05 – 11:15</p>
+                        </div>
+
+                        <!-- Presentación 1.4 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-blue-700">11:15 – 11:30</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Diana Laura Ochoa Mariscal.</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Salud ambiental y percepción de riesgos hacia un Modelo de Acción Comunitaria con el enfoque 'Una Salud' en Santa Anita, Tlaquepaque, Jalisco."</p>
+                            <p class="text-sm font-medium text-blue-600 mt-2">Comentarios y Evaluación: 11:30 – 11:40</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MESA 2: DETERMINANTES AMBIENTALES DE LA SALUD -->
+                <div class="bg-teal-50 border border-teal-200 rounded-lg p-5">
+                    <h3 class="text-xl font-bold text-teal-800 mb-4 pb-2 border-b border-teal-300">DETERMINANTES AMBIENTALES DE LA SALUD</h3>
+                    <div class="text-sm mb-4 p-3 bg-white rounded-md shadow-sm">
+                        <p><strong>Presidenta:</strong> Dra. María Guadalupe Garibay Chávez</p>
+                        <p><strong>Secretario:</strong> Dr. Javier García Velasco</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Presentación 2.1 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-teal-700">10:00 – 10:15</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Claudia Marlen Tafolla Rodríguez</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Impacto del cambio climático en el ciclo de vida del Aedes aegypti y la incidencia de dengue en Jalisco."</p>
+                            <div class="text-xs mt-2 text-gray-600">
+                                <p><strong>Director:</strong> Dr. José Ariel Ruiz Corral</p>
+                                <p><strong>Codirectora:</strong> Dra. Ma. Guadalupe Garibay Chávez</p>
+                            </div>
+                            <p class="text-sm font-medium text-teal-600 mt-2">Comentarios y Evaluación: 10:15 – 10:25</p>
+                        </div>
+                        
+                        <!-- Presentación 2.2 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-teal-700">10:25 – 10:40</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Diana Aideé Ortega Ríos</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Análisis situacional de contaminantes emergentes: hormonas en aguas superficiales y subterráneas de uso y consumo en el estado de Jalisco, afectaciones a la Salud."</p>
+                            <div class="text-xs mt-2 text-gray-600">
+                                <p><strong>Director:</strong> Dr. Javier García Velasco</p>
+                                <p><strong>Codirectora:</strong> Dra. Celia De La Mora Orozco</p>
+                            </div>
+                            <p class="text-sm font-medium text-teal-600 mt-2">Comentarios y Evaluación: 10:40 – 10:50</p>
+                        </div>
+
+                        <!-- Presentación 2.3 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-teal-700">10:50 – 11:05</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Mariana Alejandra Beltrán Díaz</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"El confort térmico como indicador de salud en espacios públicos del Área Metropolitana de Guadalajara 2025."</p>
+                            <div class="text-xs mt-2 text-gray-600">
+                                <p><strong>Directora:</strong> Dra. Valentina Davydova Belitskaya</p>
+                                <p><strong>Codirector:</strong> Dr. Arturo Chacón Torres</p>
+                            </div>
+                            <p class="text-sm font-medium text-teal-600 mt-2">Comentarios y Evaluación: 11:05 – 11:15</p>
+                        </div>
+
+                        <!-- Presentación 2.4 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-teal-700">11:15 – 11:30</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Omar Echevarría Nápoles</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Propagación del dengue en municipios de la Zona Metropolitana de Guadalajara mediante la detección de la infección por pruebas serológicas y el impacto de variables ambientales."</p>
+                            <p class="text-sm font-medium text-teal-600 mt-2">Comentarios y Evaluación: 11:30 – 11:40</p>
+                        </div>
+                        
+                        <!-- Presentación 2.5 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-teal-700">11:40 – 11:55</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Karla Lizeth Villalobos Romero</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Plaguicidas en plantas medicinales comercializadas en Guadalajara: Riesgo para la salud humana."</p>
+                            <p class="text-sm font-medium text-teal-600 mt-2">Comentarios y Evaluación: 11:55 – 12:05</p>
+                        </div>
+
+                        <!-- Presentación 2.6 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-teal-700">12:05 – 12:20</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: María del Pilar Rincón Toscano</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Terapia de baños de bosque para trabajadores sometidos a estrés en el Área Metropolitana de Guadalajara, México."</p>
+                            <p class="text-sm font-medium text-teal-600 mt-2">Comentarios y Evaluación: 12:20 – 12:30</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MESA 3: EXPOSICIÓN QUÍMICA -->
+                <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-5">
+                    <h3 class="text-xl font-bold text-indigo-800 mb-4 pb-2 border-b border-indigo-300">EXPOSICIÓN QUÍMICA</h3>
+                    <div class="text-sm mb-4 p-3 bg-white rounded-md shadow-sm">
+                        <p><strong>Presidente:</strong> Dr. Felipe de Jesús Lozano Kasten</p>
+                        <p><strong>Secretario:</strong> Dr. Arturo Figueroa Montaño</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Presentación 3.1 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-indigo-700">10:00 – 10:15</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Daniel Flores Rodríguez</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Riesgos a la salud materno-infantil por exposición a plaguicidas asociados al consumo de alimentos, en el área metropolitana de Guadalajara”"</p>
+                            <div class="text-xs mt-2 text-gray-600">
+                                <p><strong>Director:</strong> Dr. Felipe de Jesus Lozano Kasten</p>
+                                <p><strong>Codirector:</strong> Dr. Horacio Guzmán Torres</p>
+                            </div>
+                            <p class="text-sm font-medium text-indigo-600 mt-2">Comentarios y Evaluación: 10:15 – 10:25</p>
+                        </div>
+                        
+                        <!-- Presentación 3.2 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-indigo-700">10:25 – 10:40</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Astrid Campos Medina.</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Determinación de plaguicidas en orina paciente adulto post trasplante renal y su relación con la transición dietética."</p>
+                            <div class="text-xs mt-2 text-gray-600">
+                                <p><strong>Director:</strong> Dr. Alejandro Aarón Peregrina Lucano</p>
+                                <p><strong>Codirectora:</strong> Dra. Fabiola Martin Del Campo López</p>
+                            </div>
+                            <p class="text-sm font-medium text-indigo-600 mt-2">Comentarios y Evaluación: 10:40 – 10:50</p>
+                        </div>
+
+                        <!-- Presentación 3.3 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-indigo-700">10:50 – 11:05</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Rosaura Méndez González</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Efectos de la exposición a plaguicidas organofosforados, carbamatos y piretroides sobre la actividad enzimática en trabajadores agrícolas del aguacate en la comunidad de Tingambato, Michoacán."</p>
+                            <div class="text-xs mt-2 text-gray-600">
+                                <p><strong>Director:</strong> Dra. Silvia Graciela León Cortés</p>
+                                <p><strong>Codirectora:</strong> Dra. Cynthia Armendáriz Arnez</p>
+                            </div>
+                            <p class="text-sm font-medium text-indigo-600 mt-2">Comentarios y Evaluación: 11:05 – 11:15</p>
+                        </div>
+
+                        <!-- Presentación 3.4 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-indigo-700">11:15 – 11:30</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Adrián Eduardo Castañeda Ochoa</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Exposición a neonicotinoides y otros plaguicidas en trabajadores agrícolas del aguacate y su relación con síntomas respiratorios y función pulmonar."</p>
+                            <div class="text-xs mt-2 text-gray-600">
+                                <p><strong>Directora:</strong> Dra. S. Lizette Ramos de Robles</p>
+                                <p><strong>Codirectora:</strong> Dra. Cynthia Armendáriz Arnez</p>
+                            </div>
+                            <p class="text-sm font-medium text-indigo-600 mt-2">Comentarios y Evaluación: 11:30 – 11:40</p>
+                        </div>
+
+                         <!-- Presentación 3.5 -->
+                         <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-indigo-700">11:40 – 11:55</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Ana Yazmin Leyva Gómez</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Riesgo genotóxico en población expuesta a contaminación del agua por agroquímicos y metales pesados asociados al cultivo de chile de Mascota, Jalisco."</p>
+                            <p class="text-sm font-medium text-indigo-600 mt-2">Comentarios y Evaluación: 11:55 – 12:05</p>
+                        </div>
+
+                        <!-- Presentación 3.6 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-indigo-700">12:05 – 12:20</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Laura Angélica Rodríguez Hernández</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Evaluación de los efectos neurotóxicos del imidacloprid sobre la integridad de la barrera hematoencefálica y respuesta neuroinflamatoria (en el ratón macho adulto de la cepa C57BL/6)."</p>
+                            <p class="text-sm font-medium text-indigo-600 mt-2">Comentarios y Evaluación: 12:20 – 12:30</p>
+                        </div>
+
+                        <!-- Presentación 3.7 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                            <p class="font-bold text-indigo-700">12:30 – 12:45</p>
+                            <p class="mt-1 font-semibold text-gray-900">Estudiante: Juan Pablo Ortega Sandoval</p>
+                            <p class="text-sm mt-2 italic text-gray-700">"Evaluación del efecto del imidacloprid sobre la integridad de la barrera intestinal y marcadores del síndrome metabólico en el ratón macho adulto de la cepa C57BL/6."</p>
+                            <p class="text-sm font-medium text-indigo-600 mt-2">Comentarios y Evaluación: 12:45 – 12:55</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Script para generar el PDF -->
+    <script>
+        // Importar jsPDF del objeto window
+        const { jsPDF } = window.jspdf;
+
+        // Referencias a los elementos
+        const pdfButton = document.getElementById('download-pdf');
+        const areaImprimible = document.getElementById('programa-container');
+
+        // Función para descargar el PDF
+        const descargarPDF = () => {
+            // Mostrar estado de carga
+            pdfButton.disabled = true;
+            pdfButton.textContent = 'Generando PDF...';
+            pdfButton.classList.add('btn-loading');
+
+            // Usar html2canvas para "fotografiar" el contenedor
+            // scale: 2 aumenta la resolución de la imagen
+            // useCORS: true permite cargar las imágenes de Wikimedia
+            html2canvas(areaImprimible, { 
+                scale: 2,
+                useCORS: true 
+            }).then(canvas => {
+                // 'canvas' es la imagen de la página
+                const imgData = canvas.toDataURL('image/png');
+                
+                // Calcular dimensiones para el PDF
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+
+                // Ancho estándar A4 en mm (210mm)
+                const pdfWidth = 210; 
+                // Calcular el alto del PDF para mantener la proporción de la imagen
+                const pdfHeight = (canvasHeight * pdfWidth) / canvasWidth;
+
+                // Crear un PDF con orientación 'portrait' y las dimensiones calculadas
+                // Esto crea una "sola hoja" muy larga
+                const pdf = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]);
+
+                // Añadir la imagen al PDF, cubriendo toda la página
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                
+                // Guardar el archivo
+                pdf.save('programa-coloquio-completo.pdf');
+
+            }).catch(err => {
+                console.error("Error al generar el PDF:", err);
+            }).finally(() => {
+                // Restablecer el botón
+                pdfButton.disabled = false;
+                pdfButton.textContent = 'Descargar PDF (Una Sola Página)';
+                pdfButton.classList.remove('btn-loading');
+            });
+        };
+
+        // Asignar el evento al botón
+        pdfButton.addEventListener('click', descargarPDF);
+    </script>
+
+</body>
+</html>
