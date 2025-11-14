@@ -13,6 +13,9 @@
     <!-- 2. jsPDF: Para crear el archivo PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
+    <!-- 3. Librería para generar DOCX (Word) - Cambiado a CDN de jsDelivr -->
+    <script src="https://cdn.jsdelivr.net/npm/html-to-docx@1.8.0/dist/html-to-docx.js"></script>
+    
     <style>
         /* Fuente Inter */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -34,10 +37,13 @@
 </head>
 <body class="bg-gray-100 text-gray-800 p-4 md:p-8">
 
-    <!-- Botón de descarga -->
-    <div class="max-w-7xl mx-auto mb-4 text-right">
+    <!-- Botones de descarga -->
+    <div class="max-w-7xl mx-auto mb-4 text-right flex justify-end">
         <button id="download-pdf" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300">
             Descargar PDF (Una Sola Página)
+        </button>
+        <button id="download-doc" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ml-2">
+            Descargar DOC (.doc)
         </button>
     </div>
 
@@ -295,63 +301,91 @@
 
     </div>
 
-    <!-- Script para generar el PDF -->
+    <!-- Script para generar los documentos -->
     <script>
         // Importar jsPDF del objeto window
         const { jsPDF } = window.jspdf;
 
-        // Referencias a los elementos
+        // === LÓGICA PARA PDF ===
         const pdfButton = document.getElementById('download-pdf');
         const areaImprimible = document.getElementById('programa-container');
 
-        // Función para descargar el PDF
         const descargarPDF = () => {
-            // Mostrar estado de carga
             pdfButton.disabled = true;
             pdfButton.textContent = 'Generando PDF...';
             pdfButton.classList.add('btn-loading');
 
-            // Usar html2canvas para "fotografiar" el contenedor
-            // scale: 2 aumenta la resolución de la imagen
-            // useCORS: true permite cargar las imágenes de Wikimedia
             html2canvas(areaImprimible, { 
                 scale: 2,
                 useCORS: true 
             }).then(canvas => {
-                // 'canvas' es la imagen de la página
                 const imgData = canvas.toDataURL('image/png');
-                
-                // Calcular dimensiones para el PDF
                 const canvasWidth = canvas.width;
                 const canvasHeight = canvas.height;
-
-                // Ancho estándar A4 en mm (210mm)
                 const pdfWidth = 210; 
-                // Calcular el alto del PDF para mantener la proporción de la imagen
                 const pdfHeight = (canvasHeight * pdfWidth) / canvasWidth;
-
-                // Crear un PDF con orientación 'portrait' y las dimensiones calculadas
-                // Esto crea una "sola hoja" muy larga
                 const pdf = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]);
-
-                // Añadir la imagen al PDF, cubriendo toda la página
                 pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                
-                // Guardar el archivo
                 pdf.save('programa-coloquio-completo.pdf');
-
             }).catch(err => {
                 console.error("Error al generar el PDF:", err);
             }).finally(() => {
-                // Restablecer el botón
                 pdfButton.disabled = false;
                 pdfButton.textContent = 'Descargar PDF (Una Sola Página)';
                 pdfButton.classList.remove('btn-loading');
             });
         };
-
-        // Asignar el evento al botón
         pdfButton.addEventListener('click', descargarPDF);
+
+
+        // === LÓGICA PARA DOC (WORD) ===
+        const docButton = document.getElementById('download-doc');
+
+        const descargarDOC = () => {
+            docButton.disabled = true;
+            docButton.textContent = 'Generando DOC...';
+            docButton.classList.add('btn-loading');
+
+            const contentElement = document.getElementById('programa-container');
+
+            // Asegurarnos de que la librería esté en el scope
+            const generator = window.htmlToDocx;
+
+            if (!generator) {
+                console.error("htmlToDocx no está definido en window.");
+                // Restablecer el botón
+                docButton.disabled = false;
+                docButton.textContent = 'Descargar DOC (.doc)';
+                docButton.classList.remove('btn-loading');
+                return;
+            }
+
+            // Usamos htmlToDocx.asBlob para convertir el HTML
+            // outerHTML incluye el contenedor principal
+            generator.asBlob(contentElement.outerHTML).then(blob => {
+                // Crear un enlace temporal para descargar el blob
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'programa-coloquio.doc';
+                
+                // Simular clic en el enlace
+                document.body.appendChild(link);
+                link.click();
+                
+                // Limpiar
+                document.body.removeChild(link);
+                URL.revokeObjectURL(link.href);
+
+            }).catch(err => {
+                console.error("Error al generar el DOC:", err);
+            }).finally(() => {
+                // Restablecer el botón
+                docButton.disabled = false;
+                docButton.textContent = 'Descargar DOC (.doc)';
+                docButton.classList.remove('btn-loading');
+            });
+        };
+        docButton.addEventListener('click', descargarDOC);
     </script>
 
 </body>
