@@ -8,13 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Librerías para generar PDF -->
-    <!-- 1. html2canvas: Para "tomar foto" de la web -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <!-- 2. jsPDF: Para crear el archivo PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
-    <!-- 3. Librería para generar DOCX (Word) - Cambiado a CDN de jsDelivr -->
-    <script src="https://cdn.jsdelivr.net/npm/html-to-docx@1.8.0/dist/html-to-docx.js"></script>
     
     <style>
         /* Fuente Inter */
@@ -37,28 +32,22 @@
 </head>
 <body class="bg-gray-100 text-gray-800 p-4 md:p-8">
 
-    <!-- Botones de descarga -->
-    <div class="max-w-7xl mx-auto mb-4 text-right flex justify-end">
+    <!-- Botón de descarga -->
+    <div class="max-w-7xl mx-auto mb-4 text-right">
         <button id="download-pdf" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300">
             Descargar PDF (Una Sola Página)
-        </button>
-        <button id="download-doc" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ml-2">
-            Descargar DOC (.doc)
         </button>
     </div>
 
     <!-- Contenedor principal que simula una hoja -->
-    <!-- Añadimos un ID "programa-container" para que el script sepa qué "fotografiar" -->
     <div id="programa-container" class="max-w-7xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
         
         <!-- Encabezado -->
         <header class="p-6 md:p-10 bg-white border-b border-gray-200">
             <div class="flex flex-col items-center space-y-6">
-                <!-- Logos con alturas ajustadas para mejor balance visual -->
+                <!-- Logos -->
                 <div class="flex flex-wrap justify-center items-center gap-6">
-                    <!-- Logo CUCBA (más ancho) con altura reducida -->
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Logo_CUCBA.png" alt="Logo CUCBA" class="h-16 w-auto rounded-md">
-                    <!-- Logos UdG y Maestría -->
                     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Logotipo_Universidad-de-Guadalajara.png" alt="Logo Universidad de Guadalajara" class="h-20 w-auto rounded-md">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Maestr%C3%ADa_en_Ciencias_de_la_Salud_Ambiental.png" alt="Logo Maestría" class="h-20 w-auto rounded-md">
                 </div>
@@ -74,23 +63,47 @@
                 <p class="text-lg md:text-xl font-medium text-gray-600 mt-2">AVANCES DE INVESTIGACIÓN DE TESIS MAESTRÍA EN CIENCIAS DE LA SALUD AMBIENTAL</p>
                 
                 <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-8 mt-4 text-base md:text-lg">
-                    <p class="font-semibold"><span class="text-gray-500">LUGAR:</span> AULAS DE POSGRADO</p>
-                    <p class="font-semibold"><span class="text-gray-500">HORARIO:</span> 10:00 a 13:00 horas</p>
+                    <p class="font-semibold"><span class="text-gray-500">UBICACIÓN GENERAL:</span> EDIFICIO DE COORDINACIONES CUCBA</p>
                 </div>
             </div>
         </header>
 
-        <!-- Contenido Principal - Mesas -->
+        <!-- Contenido Principal -->
         <main class="p-6 md:p-10">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">MESAS DE TRABAJO</h2>
+
+            <!-- SECCIÓN NUEVA: JUNTA ACADEMIA -->
+            <div class="mb-10 max-w-4xl mx-auto">
+                <div class="bg-gray-50 border-l-8 border-gray-700 rounded-r-lg shadow-md p-6 flex flex-col md:flex-row justify-between items-center">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">REUNIÓN DE JUNTA ACADEMIA</h2>
+                        <p class="text-gray-600 mt-1">Sesión previa al inicio de mesas</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 text-right md:text-left">
+                        <p class="font-bold text-lg text-gray-800">🕗 8:30 a 9:50 am</p>
+                        <p class="font-medium text-gray-700">📍 Sala de Tesis de Posgrado CUCBA</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-gray-200 mb-10">
+
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">MESAS DE TRABAJO</h2>
+            <p class="text-center text-gray-500 font-medium mb-8">Horario de Mesas: 10:00 a 13:00 horas</p>
             
             <!-- Grid de 3 Columnas -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
                 
                 <!-- MESA 1: DETERMINANTES SOCIALES DE LA SALUD -->
                 <div class="bg-blue-50 border border-blue-200 rounded-lg p-5">
-                    <h3 class="text-xl font-bold text-blue-800 mb-4 pb-2 border-b border-blue-300">DETERMINANTES SOCIALES DE LA SALUD</h3>
-                    <div class="text-sm mb-4 p-3 bg-white rounded-md shadow-sm">
+                    <h3 class="text-xl font-bold text-blue-800 text-center">DETERMINANTES SOCIALES DE LA SALUD</h3>
+                    
+                    <!-- Ubicación Específica Mesa 1 -->
+                    <div class="mt-2 mb-4 bg-blue-100 text-blue-900 py-2 px-3 rounded text-center text-sm font-semibold border border-blue-200">
+                        📍 Sala de Tesis de Posgrado CUCBA <br>
+                        <span class="text-xs font-normal opacity-75">(Edificio de Coordinaciones)</span>
+                    </div>
+
+                    <div class="text-sm mb-4 p-3 bg-white rounded-md shadow-sm border-l-4 border-blue-500">
                         <p><strong>Presidente:</strong> Dr. René Cristóbal Crocker Sagastume</p>
                         <p><strong>Secretario:</strong> Dr. Arturo Curiel Ballesteros</p>
                     </div>
@@ -144,8 +157,15 @@
 
                 <!-- MESA 2: DETERMINANTES AMBIENTALES DE LA SALUD -->
                 <div class="bg-teal-50 border border-teal-200 rounded-lg p-5">
-                    <h3 class="text-xl font-bold text-teal-800 mb-4 pb-2 border-b border-teal-300">DETERMINANTES AMBIENTALES DE LA SALUD</h3>
-                    <div class="text-sm mb-4 p-3 bg-white rounded-md shadow-sm">
+                    <h3 class="text-xl font-bold text-teal-800 text-center">DETERMINANTES AMBIENTALES DE LA SALUD</h3>
+                    
+                    <!-- Ubicación Específica Mesa 2 -->
+                    <div class="mt-2 mb-4 bg-teal-100 text-teal-900 py-2 px-3 rounded text-center text-sm font-semibold border border-teal-200">
+                        📍 Auditorio ATINNA II <br>
+                        <span class="text-xs font-normal opacity-75">(Edificio de Coordinaciones)</span>
+                    </div>
+
+                    <div class="text-sm mb-4 p-3 bg-white rounded-md shadow-sm border-l-4 border-teal-500">
                         <p><strong>Presidenta:</strong> Dra. María Guadalupe Garibay Chávez</p>
                         <p><strong>Secretario:</strong> Dr. Javier García Velasco</p>
                     </div>
@@ -215,8 +235,15 @@
 
                 <!-- MESA 3: EXPOSICIÓN QUÍMICA -->
                 <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-5">
-                    <h3 class="text-xl font-bold text-indigo-800 mb-4 pb-2 border-b border-indigo-300">EXPOSICIÓN QUÍMICA</h3>
-                    <div class="text-sm mb-4 p-3 bg-white rounded-md shadow-sm">
+                    <h3 class="text-xl font-bold text-indigo-800 text-center">EXPOSICIÓN QUÍMICA</h3>
+                    
+                    <!-- Ubicación Específica Mesa 3 -->
+                    <div class="mt-2 mb-4 bg-indigo-100 text-indigo-900 py-2 px-3 rounded text-center text-sm font-semibold border border-indigo-200">
+                        📍 Auditorio ATINNA I <br>
+                        <span class="text-xs font-normal opacity-75">(Edificio de Coordinaciones)</span>
+                    </div>
+
+                    <div class="text-sm mb-4 p-3 bg-white rounded-md shadow-sm border-l-4 border-indigo-500">
                         <p><strong>Presidente:</strong> Dr. Felipe de Jesús Lozano Kasten</p>
                         <p><strong>Secretario:</strong> Dr. Arturo Figueroa Montaño</p>
                     </div>
@@ -301,91 +328,63 @@
 
     </div>
 
-    <!-- Script para generar los documentos -->
+    <!-- Script para generar el PDF -->
     <script>
         // Importar jsPDF del objeto window
         const { jsPDF } = window.jspdf;
 
-        // === LÓGICA PARA PDF ===
+        // Referencias a los elementos
         const pdfButton = document.getElementById('download-pdf');
         const areaImprimible = document.getElementById('programa-container');
 
+        // Función para descargar el PDF
         const descargarPDF = () => {
+            // Mostrar estado de carga
             pdfButton.disabled = true;
             pdfButton.textContent = 'Generando PDF...';
             pdfButton.classList.add('btn-loading');
 
+            // Usar html2canvas para "fotografiar" el contenedor
+            // scale: 2 aumenta la resolución de la imagen
+            // useCORS: true permite cargar las imágenes de Wikimedia
             html2canvas(areaImprimible, { 
                 scale: 2,
                 useCORS: true 
             }).then(canvas => {
+                // 'canvas' es la imagen de la página
                 const imgData = canvas.toDataURL('image/png');
+                
+                // Calcular dimensiones para el PDF
                 const canvasWidth = canvas.width;
                 const canvasHeight = canvas.height;
+
+                // Ancho estándar A4 en mm (210mm)
                 const pdfWidth = 210; 
+                // Calcular el alto del PDF para mantener la proporción de la imagen
                 const pdfHeight = (canvasHeight * pdfWidth) / canvasWidth;
+
+                // Crear un PDF con orientación 'portrait' y las dimensiones calculadas
+                // Esto crea una "sola hoja" muy larga
                 const pdf = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]);
+
+                // Añadir la imagen al PDF, cubriendo toda la página
                 pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                
+                // Guardar el archivo
                 pdf.save('programa-coloquio-completo.pdf');
+
             }).catch(err => {
                 console.error("Error al generar el PDF:", err);
             }).finally(() => {
+                // Restablecer el botón
                 pdfButton.disabled = false;
                 pdfButton.textContent = 'Descargar PDF (Una Sola Página)';
                 pdfButton.classList.remove('btn-loading');
             });
         };
+
+        // Asignar el evento al botón
         pdfButton.addEventListener('click', descargarPDF);
-
-
-        // === LÓGICA PARA DOC (WORD) ===
-        const docButton = document.getElementById('download-doc');
-
-        const descargarDOC = () => {
-            docButton.disabled = true;
-            docButton.textContent = 'Generando DOC...';
-            docButton.classList.add('btn-loading');
-
-            const contentElement = document.getElementById('programa-container');
-
-            // Asegurarnos de que la librería esté en el scope
-            const generator = window.htmlToDocx;
-
-            if (!generator) {
-                console.error("htmlToDocx no está definido en window.");
-                // Restablecer el botón
-                docButton.disabled = false;
-                docButton.textContent = 'Descargar DOC (.doc)';
-                docButton.classList.remove('btn-loading');
-                return;
-            }
-
-            // Usamos htmlToDocx.asBlob para convertir el HTML
-            // outerHTML incluye el contenedor principal
-            generator.asBlob(contentElement.outerHTML).then(blob => {
-                // Crear un enlace temporal para descargar el blob
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = 'programa-coloquio.doc';
-                
-                // Simular clic en el enlace
-                document.body.appendChild(link);
-                link.click();
-                
-                // Limpiar
-                document.body.removeChild(link);
-                URL.revokeObjectURL(link.href);
-
-            }).catch(err => {
-                console.error("Error al generar el DOC:", err);
-            }).finally(() => {
-                // Restablecer el botón
-                docButton.disabled = false;
-                docButton.textContent = 'Descargar DOC (.doc)';
-                docButton.classList.remove('btn-loading');
-            });
-        };
-        docButton.addEventListener('click', descargarDOC);
     </script>
 
 </body>
