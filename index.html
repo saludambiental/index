@@ -47,6 +47,7 @@
                 <label class="block text-sm font-medium text-gray-700 mb-1">Tipo de Participación</label>
                 <select id="inputRol" class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-500 outline-none" onchange="actualizarConstancia()">
                     <option value="su participación como PONENTE">PONENTE</option>
+                    <option value="su participación como EVALUADOR">EVALUADOR</option>
                     <option value="su asistencia como ASISTENTE">ASISTENTE</option>
                     <option value="su participación como MODERADOR">MODERADOR</option>
                     <option value="su participación como ORGANIZADOR">ORGANIZADOR</option>
@@ -90,8 +91,8 @@
                     <!-- Logo CUCS -->
                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/CUCS_Logo.png" alt="Logo CUCS" class="h-20 w-auto object-contain" crossorigin="anonymous">
                     
-                    <!-- Logo CUCBA -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Logo_CUCBA.png" alt="Logo CUCBA" class="h-20 w-auto object-contain" crossorigin="anonymous">
+                    <!-- Logo CUCBA (Reducido a la mitad: h-10) -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Logo_CUCBA.png" alt="Logo CUCBA" class="h-10 w-auto object-contain" crossorigin="anonymous">
                     
                     <!-- Logo Maestría -->
                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Maestr%C3%ADa_en_Ciencias_de_la_Salud_Ambiental.png" alt="Logo Maestría" class="h-20 w-auto object-contain" crossorigin="anonymous">
@@ -113,9 +114,9 @@
                 
                 <p class="text-xl text-gray-700 mb-1">A:</p>
                 
-                <!-- Nombre Dinámico -->
+                <!-- Nombre Dinámico SIN BORDE -->
                 <div class="mb-3">
-                    <h3 id="displayNombre" class="text-4xl font-bold text-gray-900 border-b-2 border-gray-300 inline-block px-12 pb-1 min-w-[500px]">
+                    <h3 id="displayNombre" class="text-4xl font-bold text-gray-900 inline-block px-12 pb-1 min-w-[500px]">
                         Nombre del Participante
                     </h3>
                 </div>
@@ -123,7 +124,7 @@
                 <p class="text-2xl text-gray-700 leading-relaxed max-w-5xl mx-auto px-8">
                     Por <span id="displayRol" class="font-bold text-teal-800">su participación como PONENTE</span> en el 
                     <span class="font-bold text-blue-900">"COLOQUIO DE AVANCES DE INVESTIGACIÓN DE TESIS DE LA MAESTRÍA EN CIENCIAS DE LA SALUD AMBIENTAL"</span>,
-                    llevado a cabo el día 28 de noviembre de 2025.
+                    llevado a cabo en el calendario escolar 2025-B.
                 </p>
                 
                 <p class="text-md text-gray-500 mt-3 italic">
@@ -147,7 +148,7 @@
                 <div class="text-center flex flex-col items-center justify-end h-28">
                     <!-- Línea de firma -->
                     <div class="w-72 h-0.5 bg-black mb-2"></div>
-                    <p class="font-bold text-gray-900 text-lg">Dr. Felipe Lozano Kasten</p>
+                    <p class="font-bold text-gray-900 text-lg">Dr. Felipe de Jesús Lozano Kasten</p>
                     <p class="text-sm text-gray-700 leading-tight">Coordinador de la Maestría en Ciencias<br>de la Salud Ambiental, CUCS</p>
                 </div>
             </footer>
